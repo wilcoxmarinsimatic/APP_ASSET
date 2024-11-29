@@ -35,6 +35,5 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-
-    implementation files('libs/nombre-del-sdk.jar')
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
 }
