@@ -20,14 +20,18 @@
         android:theme="@style/Theme.Lector_rfid"
         tools:targetApi="31">
 
-        <!-- Actividad principal -->
-        <activity android:name="com.example.lector_rfid.application.di.MainActivity"
+        <!-- LoginActivity será la actividad principal -->
+        <activity android:name="com.example.lector_rfid.application.activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MainActivity para redirección después del login -->
+        <activity android:name="com.example.lector_rfid.application.di.MainActivity"
+            android:exported="true" />
 
         <!-- Declarar otros servicios si aplica -->
         <!-- Ejemplo de un servicio que puede ser necesario -->
