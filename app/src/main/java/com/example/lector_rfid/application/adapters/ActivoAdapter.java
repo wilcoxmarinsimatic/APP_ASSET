@@ -12,12 +12,10 @@ import com.example.lector_rfid.R;
 
 import java.util.List;
 
-// Clase modelo para representar un Activo
 public class ActivoAdapter extends RecyclerView.Adapter<ActivoAdapter.ActivoViewHolder> {
 
     private final List<Activo> activos;
 
-    // Constructor
     public ActivoAdapter(List<Activo> activos) {
         this.activos = activos;
     }
@@ -40,7 +38,6 @@ public class ActivoAdapter extends RecyclerView.Adapter<ActivoAdapter.ActivoView
         return activos.size();
     }
 
-    // Clase ViewHolder
     public static class ActivoViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvCodigoRFID;
         private final TextView tvTipoActivo;
@@ -72,7 +69,6 @@ public class ActivoAdapter extends RecyclerView.Adapter<ActivoAdapter.ActivoView
         }
     }
 
-    // Clase modelo Activo
     public static class Activo {
         private final String codigoRFID;
         private final String tipoActivo;
