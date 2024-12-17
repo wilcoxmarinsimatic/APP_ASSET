@@ -1,22 +1,19 @@
 package com.example.lector_rfid.domain.entities;
 
-
 public class Auditoria {
     private final String name;
-    private final int pendingTasks;
+    private final int count;
 
-    public Auditoria(String name, int pendingTasks) {
+    public Auditoria(String name, int count) {
         this.name = name;
-        this.pendingTasks = pendingTasks;
+        this.count = count;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPendingTasks() {
-        return pendingTasks;
+    public int getCount() {
+        return count;
     }
 }
-
-

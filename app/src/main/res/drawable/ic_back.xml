@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Color de la flecha -->
+    <path
+        android:fillColor="#FFFFFF"
+    android:pathData="M15.5,19l-1.41,1.41L6.08,12l8.01,-8.41L15.5,5l-6.59,7L15.5,19z" />
+</vector>
