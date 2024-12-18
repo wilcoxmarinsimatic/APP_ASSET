@@ -33,9 +33,17 @@
         <activity android:name="com.example.lector_rfid.application.di.MainActivity"
             android:exported="true" />
 
-        <!-- Declarar otros servicios si aplica -->
-        <!-- Ejemplo de un servicio que puede ser necesario -->
-       <!-- <activity android:name=".services.RFIDService" />-->
+        <activity android:name=".application.activities.DetalleAuditoriaActivity" />
+
+
+        <!-- Servicio para Firebase Cloud Messaging -->
+        <service
+            android:name=".infrastructure.messaging.MyFirebaseMessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
 
     </application>
 </manifest>

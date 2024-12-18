@@ -1,6 +1,5 @@
 package com.example.lector_rfid.application.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,44 +9,32 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lector_rfid.R;
 import com.example.lector_rfid.domain.entities.Auditoria;
 
 import java.util.List;
 
-public class AuditoriasAdapter extends RecyclerView.Adapter<AuditoriasAdapter.AuditoriasViewHolder> {
+public class AuditoriasAdapter extends RecyclerView.Adapter<AuditoriasAdapter.ViewHolder> {
 
-    private final Context context;
     private final List<Auditoria> auditorias;
 
-    public interface OnItemClickListener {
-        void onItemClick(Auditoria auditoria);
-    }
-
-    private final OnItemClickListener listener;
-
-    public AuditoriasAdapter(Context context, List<Auditoria> auditorias, OnItemClickListener listener) {
-        this.context = context;
+    public AuditoriasAdapter(List<Auditoria> auditorias) {
         this.auditorias = auditorias;
-        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public AuditoriasViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //View view = LayoutInflater.from(context).inflate(R.layout.item_auditoria, parent, false);
-       // return new AuditoriasViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_auditoria, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AuditoriasViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Auditoria auditoria = auditorias.get(position);
-
-        // Configurar nombre y contador
-        holder.tvName.setText(auditoria.getName());
-       // holder.tvCount.setText(String.valueOf(auditoria.getCount()));
-
-        // Acción al hacer clic en el botón de flecha
-        holder.btnArrow.setOnClickListener(v -> listener.onItemClick(auditoria));
+        holder.tvAuditoriaName.setText(auditoria.getName());
+        holder.tvAuditoriaCount.setText(String.valueOf(auditoria.getCount()));
     }
 
     @Override
@@ -55,15 +42,13 @@ public class AuditoriasAdapter extends RecyclerView.Adapter<AuditoriasAdapter.Au
         return auditorias.size();
     }
 
-    static class AuditoriasViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvCount;
-        ImageButton btnArrow;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvAuditoriaName, tvAuditoriaCount;
 
-        public AuditoriasViewHolder(@NonNull View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
-           // tvName = itemView.findViewById(R.id.tv_auditoria_name);
-           // tvCount = itemView.findViewById(R.id.tv_auditoria_count);
-           // btnArrow = itemView.findViewById(R.id.btn_arrow);
+            tvAuditoriaName = itemView.findViewById(R.id.tv_auditoria_name);
+            tvAuditoriaCount = itemView.findViewById(R.id.tv_auditoria_count);
         }
     }
 }

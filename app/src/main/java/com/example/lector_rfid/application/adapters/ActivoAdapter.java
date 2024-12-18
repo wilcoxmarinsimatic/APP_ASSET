@@ -10,14 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lector_rfid.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActivoAdapter extends RecyclerView.Adapter<ActivoAdapter.ActivoViewHolder> {
 
-    private final List<Activo> activos;
+    private final List<Activo> activos; // Lista de activos mostrados
 
     public ActivoAdapter(List<Activo> activos) {
-        this.activos = activos;
+        this.activos = new ArrayList<>(activos); // Evita la referencia directa
     }
 
     @NonNull
@@ -36,6 +37,14 @@ public class ActivoAdapter extends RecyclerView.Adapter<ActivoAdapter.ActivoView
     @Override
     public int getItemCount() {
         return activos.size();
+    }
+
+    // Método para actualizar la lista de activos
+
+    public void updateList(List<Activo> nuevosActivos) {
+        activos.clear();
+        activos.addAll(nuevosActivos);
+        notifyDataSetChanged();
     }
 
     public static class ActivoViewHolder extends RecyclerView.ViewHolder {
@@ -69,6 +78,7 @@ public class ActivoAdapter extends RecyclerView.Adapter<ActivoAdapter.ActivoView
         }
     }
 
+    // Clase Activo
     public static class Activo {
         private final String codigoRFID;
         private final String tipoActivo;

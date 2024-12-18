@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "317331341224",
+    "project_id": "cimatic-rfid-app",
+    "storage_bucket": "cimatic-rfid-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317331341224:android:b8b26b9f3db9f4be2de79d",
+        "android_client_info": {
+          "package_name": "com.example.lector_rfid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtYp_-SCHFYhv_mlhxxUgtKhyZGJ41n-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
