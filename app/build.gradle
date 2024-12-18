@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.lector_rfid'
+    namespace 'com.cimatic.lector_rfid'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.lector_rfid"
+        applicationId "com.cimatic.lector_rfid"
         minSdk 26
         targetSdk 34
         versionCode 1
@@ -46,4 +46,6 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.4.2'
     annotationProcessor 'androidx.room:room-compiler:2.4.2'
     implementation 'com.google.firebase:firebase-firestore:24.5.0'
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-analytics")
 }

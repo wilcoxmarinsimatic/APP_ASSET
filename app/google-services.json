@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:317331341224:android:b8b26b9f3db9f4be2de79d",
+        "mobilesdk_app_id": "1:317331341224:android:90858d9be8c3f0ca2de79d",
         "android_client_info": {
-          "package_name": "com.example.lector_rfid"
+          "package_name": "com.cimatic.lector_rfid"
         }
       },
       "oauth_client": [],
