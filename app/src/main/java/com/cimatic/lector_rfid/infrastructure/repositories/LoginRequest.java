@@ -5,7 +5,7 @@ public class LoginRequest {
     private final String password;
     private final Boolean isWeb;
 
-    public LoginRequest(String email, String password,Boolean isWeb ) {
+    public LoginRequest(String email, String password, Boolean isWeb) {
         this.email = email;
         this.password = password;
         this.isWeb = isWeb;
@@ -14,11 +14,12 @@ public class LoginRequest {
     public String getEmail() {
         return email;
     }
+
     public String getPassword() {
         return password;
     }
 
-    public Boolean getisWeb() {
+    public Boolean getIsWeb() {
         return isWeb;
     }
 }

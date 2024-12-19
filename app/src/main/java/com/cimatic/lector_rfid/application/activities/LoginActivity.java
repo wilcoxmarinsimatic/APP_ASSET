@@ -12,7 +12,6 @@ import com.cimatic.lector_rfid.R;
 import com.cimatic.lector_rfid.application.di.AppModule;
 import com.cimatic.lector_rfid.application.di.MainActivity;
 import com.cimatic.lector_rfid.application.utils.SessionManager;
-import com.cimatic.lector_rfid.domain.entities.User;
 import com.cimatic.lector_rfid.domain.usecase.LoginUseCase;
 
 public class LoginActivity extends AppCompatActivity {
@@ -50,17 +49,20 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            try {
-                User user = loginUseCase.execute(email, password);
-                if (user != null && user.getId() != null) {
-                    sessionManager.saveLoginSession(user.getToken());
-                    redirectToMenu();
-                } else {
-                    Toast.makeText(this, "Inicio de sesión fallido.", Toast.LENGTH_SHORT).show();
-                }
-            } catch (Exception e) {
-                Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
+            // Llamada asíncrona al caso de uso
+            loginUseCase.execute(email, password)
+                    .thenAccept(user -> {
+                        if (user != null && user.getId() != null) {
+                            sessionManager.saveLoginSession(user.getToken());
+                            runOnUiThread(this::redirectToMenu);
+                        } else {
+                            runOnUiThread(() -> Toast.makeText(this, "Inicio de sesión fallido.", Toast.LENGTH_SHORT).show());
+                        }
+                    })
+                    .exceptionally(e -> {
+                        runOnUiThread(() -> Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                        return null;
+                    });
         });
     }
 

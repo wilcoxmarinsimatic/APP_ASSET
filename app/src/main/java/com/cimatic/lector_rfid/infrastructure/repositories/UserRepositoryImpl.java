@@ -1,9 +1,11 @@
 package com.cimatic.lector_rfid.infrastructure.repositories;
 
-import  com.cimatic.lector_rfid.domain.entities.User;
+import com.cimatic.lector_rfid.domain.entities.User;
 import com.cimatic.lector_rfid.domain.ports.UserRepository;
 import com.cimatic.lector_rfid.infrastructure.api.ApiService;
 import com.cimatic.lector_rfid.infrastructure.util.CallbackApi;
+
+import java.util.concurrent.CompletableFuture;
 
 public class UserRepositoryImpl implements UserRepository {
 
@@ -14,26 +16,23 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User login(String email, String password,Boolean isWeb) throws Exception {
-        LoginRequest request = new LoginRequest(email, password, false);
-        UserResponse  userResponse = new UserResponse();
+    public CompletableFuture<User> login(String email, String password, Boolean isWeb) {
+        CompletableFuture<User> future = new CompletableFuture<>();
+        LoginRequest request = new LoginRequest(email, password, isWeb);
+
         apiService.login(request, new CallbackApi<UserResponse>() {
             @Override
             public void onSuccess(UserResponse payload) {
-                userResponse.setId(payload.getId());
-                userResponse.setName(payload.getName());
-                userResponse.setEmail(payload.getEmail());
-                userResponse.setToken(payload.getToken());
+                User user = new User(payload.getId(), payload.getName(), payload.getEmail(), payload.getToken());
+                future.complete(user); // Completa el futuro con el usuario
             }
 
             @Override
             public void onError(Exception e) {
-                throw new IllegalArgumentException("Inicio de sesión fallido.");
+                future.completeExceptionally(new IllegalArgumentException("Inicio de sesión fallido.", e));
             }
         });
 
-
-        return new User(userResponse.getId(), userResponse.getName(), userResponse.getEmail(), userResponse.getToken());
+        return future;
     }
-
 }
