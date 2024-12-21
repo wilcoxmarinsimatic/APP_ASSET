@@ -35,9 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // Referencias a los elementos de la interfaz
-        EditText emailEditText = findViewById(R.id.emailEditText);
-        EditText passwordEditText = findViewById(R.id.passwordEditText);
-        Button loginButton = findViewById(R.id.loginButton);
+        EditText emailEditText = findViewById(R.id.email);
+        EditText passwordEditText = findViewById(R.id.password);
+        Button loginButton = findViewById(R.id.email_sign_in_button);
 
         // Configurar el botón de inicio de sesión
         loginButton.setOnClickListener(v -> {
