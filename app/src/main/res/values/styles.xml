@@ -13,4 +13,16 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="WhiteProgress">
+        <item name="android:indeterminateTint">@android:color/white</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+    </style>
+
+    <style name="LoginTextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="hintTextColor">@color/gray</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
 </resources>
